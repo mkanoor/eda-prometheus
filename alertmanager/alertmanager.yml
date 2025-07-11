@@ -1,0 +1,20 @@
+global:
+  resolve_timeout: 5m
+
+route:
+  group_by: ['alertname']
+  group_wait: 30s
+  group_interval: 5m
+  repeat_interval: 4h
+  receiver: 'my-eda-eventstream'
+
+receivers:
+  - name: 'my-eda-eventstream'
+    webhook_configs:
+      - url: 'your_eda_eventstream_url'
+        http_config:
+          basic_auth:
+            username: 'your_username'
+            password: 'your_password'
+          tls_config:
+            insecure_skip_verify: true
