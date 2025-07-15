@@ -37,6 +37,7 @@ services:
     command:
       - '--config.file=/etc/alertmanager/config.yml'
       - '--web.external-url=http://localhost:9093' # Adjust if not localhost
+      - '--log.level=debug'
     networks:
       - monitoring_network
 
